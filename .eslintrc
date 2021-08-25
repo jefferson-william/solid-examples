@@ -1,0 +1,26 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["jest", "@typescript-eslint/eslint-plugin", "prettier"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:prettier/recommended"],
+  "root": true,
+  "env": {
+    "jest": true,
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": false
+    }
+  },
+  "ignorePatterns": [],
+  "rules": {
+    "no-unused-vars": 1,
+    "@typescript-eslint/no-unused-vars": 0
+  }
+}
