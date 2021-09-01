@@ -1,40 +1,35 @@
+import { ParkingLocation } from './ParkingLocation'
+
 export class ParkingLot {
-  tickets: { plate: string; checkInDate: Date }[]
-  location: string
+  parkingLocations: ParkingLocation[]
 
-  constructor(location: string) {
-    this.tickets = []
-    this.location = location
+  constructor() {
+    this.parkingLocations = []
   }
 
-  checkIn(plate: string, checkInDate: Date) {
-    this.tickets.push({ plate, checkInDate })
+  addParkingLocation(location: string, name: string, hours: number): void {
+    this.parkingLocations.push({ location, name, hours })
   }
 
-  checkOut(plate: string, checkoutDate: Date) {
-    const ticket = this.tickets.find((ticket) => ticket.plate === plate)
-    if (!ticket) throw new Error('Ticket not found')
-    const period = (checkoutDate.getTime() - ticket.checkInDate.getTime()) / (1000 * 60 * 60)
-    let amount = 0
-    if (this.location === 'beach') {
-      amount = period * 5
-    }
-    if (this.location === 'shopping') {
-      if (ticket.checkInDate.getHours() >= 12 && ticket.checkInDate.getHours() <= 14) {
-        amount = 0
-      } else {
-        amount = period * 3
+  getSubtotalPeriod(): number {
+    return this.parkingLocations.reduce((accumulator, parkingLocation) => {
+      return accumulator + parkingLocation.hours
+    }, 0)
+  }
+
+  getFreePeriod(): number {
+    return this.parkingLocations.reduce((accumulator, parkingLocation) => {
+      if (parkingLocation.location === 'Shopping') {
+        accumulator += 1
       }
-    }
-    if (this.location === 'airport') {
-      amount = 10
-      const remainingHours = period - 3
-      if (remainingHours > 0) {
-        amount += remainingHours * 3
+      if (parkingLocation.location === 'Airport') {
+        accumulator += 2
       }
-    }
-    return {
-      amount,
-    }
+      return accumulator
+    }, 0)
+  }
+
+  getTotalPeriod(): number {
+    return this.getSubtotalPeriod() - this.getFreePeriod()
   }
 }

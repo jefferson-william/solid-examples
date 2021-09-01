@@ -1,22 +1,25 @@
 import { ParkingLot } from './ParkingLot'
 
-test('should calculate value of ticket to a car that was parked for 3 hours beach', () => {
-  const parkingLot = new ParkingLot('beach')
-  parkingLot.checkIn('ABC-1234', new Date('2020-10-10T10:00:00'))
-  const ticket = parkingLot.checkOut('ABC-1234', new Date('2020-10-10T13:00:00'))
-  expect(ticket.amount).toBe(15)
+test('should calculate subtotal period', () => {
+  const parkingLot = new ParkingLot()
+  parkingLot.addParkingLocation('Beach', 'Ubatuba', 5)
+  parkingLot.addParkingLocation('Shopping', 'Vale Sul', 4)
+  parkingLot.addParkingLocation('Airport', 'Guarulhos', 10)
+  expect(parkingLot.getSubtotalPeriod()).toBe(19)
 })
 
-test('should calculate value of ticket to a car that was parked for 2 hours shopping', () => {
-  const parkingLot = new ParkingLot('shopping')
-  parkingLot.checkIn('ABC-1234', new Date('2020-10-10T12:00:00'))
-  const ticket = parkingLot.checkOut('ABC-1234', new Date('2020-10-10T14:00:00'))
-  expect(ticket.amount).toBe(0)
+test('should calculate total period discount', () => {
+  const parkingLot = new ParkingLot()
+  parkingLot.addParkingLocation('Beach', 'Ubatuba', 5)
+  parkingLot.addParkingLocation('Shopping', 'Vale Sul', 4)
+  parkingLot.addParkingLocation('Airport', 'Guarulhos', 10)
+  expect(parkingLot.getFreePeriod()).toBe(3)
 })
 
-test('should calculate value of ticket to a car that was parked for 10 hours airport', () => {
-  const parkingLot = new ParkingLot('airport')
-  parkingLot.checkIn('ABC-1234', new Date('2020-10-10T10:00:00'))
-  const ticket = parkingLot.checkOut('ABC-1234', new Date('2020-10-10T20:00:00'))
-  expect(ticket.amount).toBe(31)
+test('should calculate total period', () => {
+  const parkingLot = new ParkingLot()
+  parkingLot.addParkingLocation('Beach', 'Ubatuba', 5)
+  parkingLot.addParkingLocation('Shopping', 'Vale Sul', 4)
+  parkingLot.addParkingLocation('Airport', 'Guarulhos', 10)
+  expect(parkingLot.getTotalPeriod()).toBe(16)
 })

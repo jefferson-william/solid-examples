@@ -31,19 +31,30 @@ yarn add -D jest typescript ts-jest prettier eslint eslint-config-airbnb eslint-
 
 #### Problema
 
-Exemplificar com SOLID algumas entidades e comportamentos ligados, a:
+Refatorar com SOLID algumas entidades e comportamentos ligados, a:
 
-- Estacionamento (`ParkingLot`);
+- Area de estacionamento (`ParkingLot`). Comece por este;
+- Localização (`ParkingLocation`);
 - Praia (`Beach`);
 - Shopping (`Shopping`);
 - Aeroporto (`Airport`);
 
+#### Desafio
+
+- Obter o **subtotal** de horas dos locais de estacionamentos;
+- Obter o total de horas em **gratuitas** desses locais de estacionamentos;
+- Obter o **total** de horas de todos os locais de estacionamentos;
+
 #### Regras
 
-- Deve ter horário de chegada (`checkIn`) e horário de saída (`checkOut`) pela placa (`plate`);
-- Quando estacionado na praia, o preço será de R$ 5,00;
-- Quando estacionado no shopping, o preço será de R$ 3,00, não sendo cobrado das 12h às 14h;
-- Quando estacionado no aeroporto, o preço será de R$ 10,00, tendo 3h gratuitas.
+- Shopping possui 1 hora gratuita;
+- Aeroporto possui 2 horas gratuitas;
+- Os demais não possuem horários gratuitos.
+
+#### Bonus
+
+- Deve ser possível obter período e valor por estacionar através do horário de chegada (`checkIn`) e
+  horário de saída (`checkOut`) pela placa (`plate`) independente do local de estacionamento;
 
 #### Objetivos
 
@@ -59,9 +70,14 @@ Exemplificar com SOLID algumas entidades e comportamentos ligados, a:
 #### Ilustração
 
 - ParkingLot
+- ParkingLocation
 - Beach
 - Shopping
 - Airport
+- addParkingLocation
+- getSubtotalPeriod
+- getFreePeriod
+- getTotalPeriod
 
 #### Abstrações
 
