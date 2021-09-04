@@ -1,14 +1,10 @@
-export class Airport {
-  location: string
-  name: string
-  hours: number
+import { ParkingLocation } from './ParkingLocation'
 
+export class Airport extends ParkingLocation {
   private freeHours = 2
 
   constructor(name: string, hours: number) {
-    this.location = 'Airport'
-    this.name = name
-    this.hours = hours
+    super('Airport', name, hours)
   }
 
   calculateFreePeriod(): number {

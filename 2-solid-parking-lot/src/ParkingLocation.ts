@@ -1,4 +1,4 @@
-export class ParkingLocation {
+export abstract class ParkingLocation {
   location: string
   name: string
   hours: number
@@ -9,14 +9,5 @@ export class ParkingLocation {
     this.hours = hours
   }
 
-  calculateFreePeriod(): number {
-    if (this.location === 'Shopping') {
-      return 1
-    }
-    if (this.location === 'Airport') {
-      return 2
-    }
-
-    return 0
-  }
+  abstract calculateFreePeriod(): number
 }
