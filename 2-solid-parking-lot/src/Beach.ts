@@ -5,7 +5,7 @@ export class Beach extends ParkingLocation {
     super('Beach', name, hours)
   }
 
-  calculateFreePeriod(): number {
-    throw new Error('Not implemented')
+  getFreePeriod(): number {
+    return 0
   }
 }
