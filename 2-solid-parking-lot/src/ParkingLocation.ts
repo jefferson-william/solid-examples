@@ -8,4 +8,15 @@ export class ParkingLocation {
     this.name = name
     this.hours = hours
   }
+
+  calculateFreePeriod(): number {
+    if (this.location === 'Shopping') {
+      return 1
+    }
+    if (this.location === 'Airport') {
+      return 2
+    }
+
+    return 0
+  }
 }

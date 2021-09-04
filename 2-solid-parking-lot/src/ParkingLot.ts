@@ -8,7 +8,7 @@ export class ParkingLot {
   }
 
   addParkingLocation(location: string, name: string, hours: number): void {
-    this.parkingLocations.push({ location, name, hours })
+    this.parkingLocations.push(new ParkingLocation(location, name, hours))
   }
 
   getSubtotalPeriod(): number {
@@ -19,13 +19,7 @@ export class ParkingLot {
 
   getFreePeriod(): number {
     return this.parkingLocations.reduce((accumulator, parkingLocation) => {
-      if (parkingLocation.location === 'Shopping') {
-        accumulator += 1
-      }
-      if (parkingLocation.location === 'Airport') {
-        accumulator += 2
-      }
-      return accumulator
+      return accumulator + parkingLocation.calculateFreePeriod()
     }, 0)
   }
 
