@@ -1,4 +1,5 @@
 import { ParkingLocation } from './ParkingLocation'
+import { ParkingLocationWithFreePeriod } from './ParkingLocationWithFreePeriod'
 
 export class ParkingLot {
   parkingLocations: ParkingLocation[]
@@ -19,7 +20,10 @@ export class ParkingLot {
 
   getFreePeriod(): number {
     return this.parkingLocations.reduce((accumulator, parkingLocation) => {
-      return accumulator + parkingLocation.calculateFreePeriod()
+      if (parkingLocation instanceof ParkingLocationWithFreePeriod) {
+        return accumulator + parkingLocation.calculateFreePeriod()
+      }
+      return accumulator
     }, 0)
   }
 

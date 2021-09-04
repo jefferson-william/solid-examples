@@ -81,4 +81,5 @@ Refatorar com SOLID algumas entidades e comportamentos ligados, a:
 
 #### Abstrações
 
-A definir.
+- ParkingLocation
+- ParkingLocationWithFreePeriod

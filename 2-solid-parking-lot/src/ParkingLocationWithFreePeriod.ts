@@ -1,4 +1,4 @@
-export abstract class ParkingLocation {
+export abstract class ParkingLocationWithFreePeriod {
   location: string
   name: string
   hours: number
@@ -8,4 +8,10 @@ export abstract class ParkingLocation {
     this.name = name
     this.hours = hours
   }
+
+  calculateFreePeriod(): number {
+    return this.getFreePeriod()
+  }
+
+  abstract getFreePeriod(): number
 }

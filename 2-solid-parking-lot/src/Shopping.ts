@@ -1,6 +1,6 @@
-import { ParkingLocation } from './ParkingLocation'
+import { ParkingLocationWithFreePeriod } from './ParkingLocationWithFreePeriod'
 
-export class Shopping extends ParkingLocation {
+export class Shopping extends ParkingLocationWithFreePeriod {
   constructor(name: string, hours: number) {
     super('Shopping', name, hours)
   }
