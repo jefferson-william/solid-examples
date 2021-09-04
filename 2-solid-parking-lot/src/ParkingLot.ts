@@ -7,8 +7,8 @@ export class ParkingLot {
     this.parkingLocations = []
   }
 
-  addParkingLocation(location: string, name: string, hours: number): void {
-    this.parkingLocations.push(new ParkingLocation(location, name, hours))
+  addParkingLocation(parkingLocation: ParkingLocation): void {
+    this.parkingLocations.push(parkingLocation)
   }
 
   getSubtotalPeriod(): number {
