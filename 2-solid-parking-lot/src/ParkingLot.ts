@@ -18,16 +18,16 @@ export class ParkingLot {
     }, 0)
   }
 
-  getFreePeriod(): number {
+  getFreePeriod(date: Date): number {
     return this.parkingLocations.reduce((accumulator, parkingLocation) => {
       if (parkingLocation instanceof ParkingLocationWithFreePeriod) {
-        return accumulator + parkingLocation.calculateFreePeriod()
+        return accumulator + parkingLocation.calculateFreePeriod(date)
       }
       return accumulator
     }, 0)
   }
 
-  getTotalPeriod(): number {
-    return this.getSubtotalPeriod() - this.getFreePeriod()
+  getTotalPeriod(date: Date): number {
+    return this.getSubtotalPeriod() - this.getFreePeriod(date)
   }
 }

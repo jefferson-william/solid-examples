@@ -9,9 +9,9 @@ export abstract class ParkingLocationWithFreePeriod {
     this.hours = hours
   }
 
-  calculateFreePeriod(): number {
-    return this.getFreePeriod()
+  calculateFreePeriod(date: Date): number {
+    return this.getFreePeriod(date)
   }
 
-  abstract getFreePeriod(): number
+  abstract getFreePeriod(date: Date): number
 }

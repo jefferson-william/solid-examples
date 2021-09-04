@@ -5,7 +5,11 @@ export class Shopping extends ParkingLocationWithFreePeriod {
     super('Shopping', name, hours)
   }
 
-  getFreePeriod(): number {
+  getFreePeriod(date: Date): number {
+    const dezember = 11
+    if (date.getMonth() === dezember) {
+      return 0
+    }
     return 1
   }
 }

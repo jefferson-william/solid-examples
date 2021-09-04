@@ -51,7 +51,13 @@ Refatorar com SOLID algumas entidades e comportamentos ligados, a:
 - Aeroporto possui 2 horas gratuitas;
 - Os demais não possuem horários gratuitos.
 
-#### Bonus
+#### Bonus 1
+
+Para ter um motivo de aplicar o **Dependency Inversion Principle**, segue mais regras para implementar:
+
+- Shopping **não** terá 1h gratuita em Dezembro.
+
+#### Bonus 2
 
 - Deve ser possível obter período e valor por estacionar através do horário de chegada (`checkIn`) e
   horário de saída (`checkOut`) pela placa (`plate`) independente do local de estacionamento;
